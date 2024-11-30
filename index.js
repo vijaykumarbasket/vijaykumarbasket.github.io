@@ -25,11 +25,11 @@ camera.position.set( 0, 20, 100 );
 controls.addEventListener( 'change', ()=>{renderer.render(scene, camera)} );
 controls.update();
 
-function animate() {
+/*function animate() {
 
 	cube.rotation.x += 0.01;
 	cube.rotation.y += 0.01;
 
 	renderer.render( scene, camera );
 
-}
+}*/
