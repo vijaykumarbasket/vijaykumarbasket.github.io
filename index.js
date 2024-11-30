@@ -17,7 +17,7 @@ scene.add( cube );
 
 const controls = new OrbitControls( camera, renderer.domElement );
 
-camera.position.set( 0, 20, 100 );
+camera.position.z = 5;
 controls.update();
 
 function animate() {
