@@ -17,25 +17,25 @@
 <script type="application/javascript">
   // Basic Three.js setup
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-  // Use the GLTFLoader addon to load a GLTF model
-  const loader = new THREE.GLTFLoader();
-  loader.load('path/to/your/model.gltf', function(gltf) {
-    scene.add(gltf.scene);
-  });
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
-  camera.position.z = 5;
 
-  // Animation loop
+  const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+camera.position.z = 5;
+
+
   function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  }
-  animate();
+	renderer.render( scene, camera );
+}
+renderer.setAnimationLoop( animate );
 </script>
 
 </body>
