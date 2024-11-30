@@ -15,18 +15,5 @@ const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
-const controls = new OrbitControls( camera, renderer.domElement );
-
 camera.position.z = 5;
-controls.update();
 
-function animate() {
-
-	requestAnimationFrame( animate );
-
-	// required if controls.enableDamping or controls.autoRotate are set to true
-	controls.update();
-
-	renderer.render( scene, camera );
-
-}
