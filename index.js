@@ -1,41 +1,23 @@
-var camera, scene, renderer, geometry, material, mesh;
+import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+  // Basic Three.js setup
+	
+  const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-init();
-animate();
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
-function init() {
 
-    scene = new THREE.Scene();
+  const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
 
-    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.z = 500;
-    scene.add(camera);
+camera.position.z = 5;
 
-    geometry = new THREE.CubeGeometry(200, 200, 200);
-    material = new THREE.MeshNormalMaterial();
 
-    mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    renderer = new THREE.CanvasRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    document.body.appendChild(renderer.domElement);
-
+  function animate() {
+	renderer.render( scene, camera );
 }
-
-function animate() {
-
-    requestAnimationFrame(animate);
-    render();
-
-}
-
-function render() {
-
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-
-    renderer.render(scene, camera);
-
-}
+renderer.setAnimationLoop( animate );
